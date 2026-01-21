@@ -242,7 +242,7 @@ function OverviewTab({ summary, onAddTransaction }: OverviewTabProps) {
             </label>
             <select
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value as IncomeCategory | ExpenseCategory)}
               className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             >
@@ -368,7 +368,7 @@ function TransactionItem({ transaction, isEditing, onEdit, onCancelEdit, onUpdat
         </div>
         <select
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value as IncomeCategory | ExpenseCategory)}
           className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500"
         >
           {categories.map(cat => (
