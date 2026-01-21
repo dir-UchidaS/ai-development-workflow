@@ -337,8 +337,12 @@ function TransactionItem({ transaction, isEditing, onEdit, onCancelEdit, onUpdat
   const categories = transaction.type === 'income' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
 
   const handleSave = () => {
+    const parsedAmount = parseFloat(amount);
+    if (isNaN(parsedAmount) || parsedAmount <= 0) {
+      return;
+    }
     onUpdate({
-      amount: parseFloat(amount),
+      amount: parsedAmount,
       date,
       category: category as IncomeCategory | ExpenseCategory,
       description,
