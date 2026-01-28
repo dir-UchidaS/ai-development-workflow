@@ -22,7 +22,7 @@ export default function TetrisPage() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (gameState.isGameOver || !gameState.currentPiece) return;
+      if (gameState.isGameOver || gameState.isPaused || !gameState.currentPiece) return;
 
       switch (event.key) {
         case 'ArrowLeft':
@@ -53,7 +53,7 @@ export default function TetrisPage() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [gameState.isGameOver, gameState.currentPiece, moveLeft, moveRight, moveDown, rotate, hardDrop]);
+  }, [gameState.isGameOver, gameState.isPaused, gameState.currentPiece, moveLeft, moveRight, moveDown, rotate, hardDrop]);
 
   return (
     <div className="min-h-screen bg-slate-900 py-8 px-4">
